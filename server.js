@@ -85,8 +85,8 @@ function parseRequestBody(req) {
   });
 }
 
-// Create HTTP Server
-const server = http.createServer(async (req, res) => {
+// Main HTTP Request Handler
+const requestHandler = async (req, res) => {
   // Enable CORS Preflight OPTIONS
   if (req.method === 'OPTIONS') {
     res.writeHead(204, {
@@ -238,8 +238,15 @@ const server = http.createServer(async (req, res) => {
     const stream = fs.createReadStream(filePath);
     stream.pipe(res);
   });
-});
+};
 
-server.listen(PORT, () => {
-  console.log(`DHAROHAR AR Heritage REST API & Server running at http://localhost:${PORT}`);
-});
+// If run directly (local development)
+if (require.main === module) {
+  const server = http.createServer(requestHandler);
+  server.listen(PORT, () => {
+    console.log(`DHAROHAR AR Heritage REST API & Server running at http://localhost:${PORT}`);
+  });
+} else {
+  // If imported as a module (Vercel Serverless)
+  module.exports = requestHandler;
+}
