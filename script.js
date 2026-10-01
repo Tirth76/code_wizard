@@ -832,3 +832,78 @@ function closeMarkerModal() {
     markerModal.removeAttribute("open");
   }
 }
+
+// ==========================================
+// FEEDBACK MODAL LOGIC
+// ==========================================
+(function() {
+  const btnOpenFeedback = document.getElementById("btn-open-feedback-modal");
+  const feedbackModal = document.getElementById("feedback-modal");
+  const btnCloseFeedback = document.getElementById("btn-close-feedback-modal");
+  const feedbackForm = document.getElementById("feedback-form");
+  const feedbackSuccess = document.getElementById("feedback-success-msg");
+
+  if (!btnOpenFeedback || !feedbackModal) return;
+
+  btnOpenFeedback.addEventListener("click", () => {
+    feedbackSuccess.style.display = "none";
+    feedbackForm.reset();
+    if (typeof feedbackModal.showModal === "function") {
+      feedbackModal.showModal();
+    } else {
+      feedbackModal.setAttribute("open", "true");
+    }
+  });
+
+  btnCloseFeedback.addEventListener("click", () => {
+    if (typeof feedbackModal.close === "function") {
+      feedbackModal.close();
+    } else {
+      feedbackModal.removeAttribute("open");
+    }
+  });
+
+  feedbackModal.addEventListener("click", (e) => {
+    if (e.target === feedbackModal) {
+      if (typeof feedbackModal.close === "function") {
+        feedbackModal.close();
+      } else {
+        feedbackModal.removeAttribute("open");
+      }
+    }
+  });
+
+  feedbackForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = feedbackForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span>Submitting...</span>';
+    
+    const payload = {
+      name: document.getElementById("feedback-name").value,
+      rating: parseInt(document.getElementById("feedback-rating").value, 10),
+      comment: document.getElementById("feedback-comment").value
+    };
+
+    try {
+      const res = await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        feedbackSuccess.style.display = "block";
+        setTimeout(() => {
+          if (typeof feedbackModal.close === "function") feedbackModal.close();
+          else feedbackModal.removeAttribute("open");
+        }, 2000);
+      }
+    } catch (err) {
+      console.error("Feedback submit error", err);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
+  });
+})();
