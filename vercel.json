@@ -1,13 +1,7 @@
 {
   "functions": {
     "server.js": {
-      "includeFiles": [
-        "index.html",
-        "style.css",
-        "script.js",
-        "assets/**",
-        "data/**"
-      ]
+      "includeFiles": "**/*"
     }
   },
   "rewrites": [
