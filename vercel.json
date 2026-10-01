@@ -1,12 +1,12 @@
 {
   "functions": {
     "server.js": {
-      "includeFiles": "data/**"
+      "includeFiles": "{index.html,style.css,script.js,assets/**,data/**}"
     }
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "destination": "/server.js"
     }
   ]
