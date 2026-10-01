@@ -336,7 +336,14 @@ function handleMarkerState(detected) {
     arStatusBadge.classList.add("detected");
     statusText.textContent = `✓ Landmark Detected: ${HERITAGE_DATA[currentMonumentId].name}`;
     arReticle.classList.add("faded");
+    
+    // Show the overlay card
     arOverlayCard.classList.remove("hidden");
+
+    // AUTO-PIN FEATURE: Like scanning a payment QR, lock the output on screen once scanned!
+    isOverlayPinned = true;
+    btnPinOverlay.classList.add("pinned");
+    btnPinOverlay.style.display = "none"; // Hide the pin button since it's permanent now
 
     // Increment Scan Count via API
     if (!isDemoMode && detected) {
@@ -348,9 +355,8 @@ function handleMarkerState(detected) {
   } else {
     arStatusBadge.classList.remove("detected");
     statusText.textContent = "Scanning for Hiro Marker...";
-    arReticle.classList.remove("faded");
-
-    // Only hide overlay if user hasn't explicitly pinned it
+    
+    // Only hide overlay if user hasn't explicitly pinned it (which is now auto-pinned!)
     if (!isOverlayPinned) {
       arOverlayCard.classList.add("hidden");
     }
