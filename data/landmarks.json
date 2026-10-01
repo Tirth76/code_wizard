@@ -1,0 +1,155 @@
+{
+  "statue_of_unity": {
+    "id": "statue_of_unity",
+    "name": "Statue of Unity",
+    "nativeName": "સ્ટૈચ્યુ ઓફ યુનિટી (સરદાર વલ્લભભાઈ પટેલ સ્મારક)",
+    "tagline": "World's Tallest Monument & Symbol of National Integration",
+    "location": "Kevadia (Ekta Nagar), Narmada, Gujarat",
+    "coordinates": "21.8380° N, 73.7191° E",
+    "builtYear": "2018 CE",
+    "architect": "Padma Bhushan Ram V. Sutar",
+    "height": "182 meters (597 feet)",
+    "category": "National Icon",
+    "badge": "World's Tallest Statue",
+    "image": "assets/statue-of-unity.jpg",
+    "shortDesc": "A colossal 182-metre tribute to Sardar Vallabhbhai Patel, the visionary statesman who unified 562 princely states into the Republic of India.",
+    "fullDesc": "Rising 182 metres above the sacred Narmada River, the Statue of Unity is the tallest statue in the world—twice the height of the Statue of Liberty. Conceived as a grand memorial to Sardar Vallabhbhai Patel, the 'Iron Man of India', the monument stands facing the Sardar Sarovar Dam on Sadhu Bet island. Built using 1,850 tonnes of bronze cladding, 210,000 cubic metres of cement concrete, and 6,500 tonnes of structural steel, it is engineered to withstand wind speeds of 220 km/h and high-magnitude earthquakes.",
+    "highlights": [
+      {
+        "label": "Record Height",
+        "value": "182 Meters",
+        "detail": "Twice the height of the Statue of Liberty"
+      },
+      {
+        "label": "Community Bronze",
+        "value": "1,850 Tonnes",
+        "detail": "Base supported by tools donated by 169,000+ Indian villages"
+      },
+      {
+        "label": "Engineering Marvel",
+        "value": "220 km/h Windproof",
+        "detail": "Twin concrete cores and seismic tuned mass dampers"
+      },
+      {
+        "label": "Viewing Gallery",
+        "value": "153m Elevation",
+        "detail": "Panoramic view of Narmada River and Satpura ranges"
+      }
+    ],
+    "culturalFacts": [
+      "The height of 182 metres was deliberately chosen to match the 182 legislative assembly constituencies of Gujarat.",
+      "Over 6 million farmers across India contributed used iron farming tools to help construct the colossal foundation.",
+      "The statue is draped in a traditional dhoti and shawl, engineered with sophisticated bronze panels cast in custom foundry molds."
+    ],
+    "audioScript": "Welcome to the Statue of Unity in Kevadia, Gujarat. Rising one hundred and eighty-two metres above the sacred Narmada River, this is the tallest statue in the world, honouring Sardar Vallabhbhai Patel, the Iron Man who unified 562 princely states into one united India.",
+    "theme3D": {
+      "color": "#D4AF37",
+      "accent": "#FF7A00",
+      "pedestalColor": "#8C6239"
+    },
+    "likes": 148,
+    "scans": 404
+  },
+  "rani_ki_vav": {
+    "id": "rani_ki_vav",
+    "name": "Rani ki Vav (The Queen's Stepwell)",
+    "nativeName": "રાણકી વાવ / रानी की वाव",
+    "tagline": "UNESCO World Heritage Masterpiece of Subterranean Architecture",
+    "location": "Patan, Saraswati River Basin, Gujarat",
+    "coordinates": "23.8589° N, 72.1017° E",
+    "builtYear": "1063 CE (Solanki Dynasty)",
+    "architect": "Commissioned by Queen Udayamati in memory of King Bhima I",
+    "height": "27m Deep, 64m Long, 20m Wide",
+    "category": "UNESCO World Heritage Site",
+    "badge": "UNESCO Inscribed 2014",
+    "image": "assets/rani-ki-vav.jpg",
+    "shortDesc": "An exquisite 11th-century inverted subterranean temple stepwell with 7 descending levels adorned with over 500 monumental stone sculptures.",
+    "fullDesc": "Rani ki Vav is an extraordinary inverted subterranean temple built during the peak of the Solanki (Chalukya) dynasty in 1063 CE by Queen Udayamati in loving memory of her consort King Bhima I. Unlike traditional temples rising toward the heavens, stepwells in Gujarat descended deep into Mother Earth to consecrate life-giving water. The stepwell features seven pillared subterranean storeys adorned with over 500 principal sculptures and 1,000 minor mythological carvings, celebrating the Dashavatara (the ten avatars of Lord Vishnu), celestial apsaras, and geometric mandalas.",
+    "highlights": [
+      {
+        "label": "UNESCO Status",
+        "value": "Inscribed 2014",
+        "detail": "Lauded for subterranean water architecture excellence"
+      },
+      {
+        "label": "Subterranean Depth",
+        "value": "7 Levels (27m)",
+        "detail": "Descending stone galleries carved in Maru-Gurjara style"
+      },
+      {
+        "label": "Sacred Carvings",
+        "value": "500+ Sculptures",
+        "detail": "Depicting Lord Vishnu avatars including Varaha and Kalki"
+      },
+      {
+        "label": "Currency Honor",
+        "value": "₹100 Banknote",
+        "detail": "Immortalized on the reverse of India's official ₹100 note"
+      }
+    ],
+    "culturalFacts": [
+      "Rani ki Vav remained completely buried under silt and sand from the Saraswati river for over 800 years, preserving the delicate carvings until excavated by the ASI in the 1980s.",
+      "The stepwell was constructed as an inverted temple where water was venerated as sacred life nectar, sanctified by carved subterranean shrines.",
+      "A hidden 30-kilometre emergency escape tunnel was discovered at the deepest tier, connecting directly to the neighboring fort town of Sidhpur."
+    ],
+    "audioScript": "Welcome to Rani ki Vav, the Queen's Stepwell in Patan, Gujarat. Inscribed as a UNESCO World Heritage site, this breathtaking eleventh-century subterranean temple descends seven storeys underground, featuring over five hundred divine stone carvings of Lord Vishnu.",
+    "theme3D": {
+      "color": "#E0A96D",
+      "accent": "#38BDF8",
+      "pedestalColor": "#78350F"
+    },
+    "likes": 198,
+    "scans": 512
+  },
+  "modhera_sun_temple": {
+    "id": "modhera_sun_temple",
+    "name": "Modhera Sun Temple",
+    "nativeName": "મોઢેરા સૂર્ય મંદિર / मोढेरा सूर्य मंदिर",
+    "tagline": "11th-Century Archaeoastronomical Marvel Dedicated to the Sun God Surya",
+    "location": "Modhera, Mehsana District, Gujarat",
+    "coordinates": "23.5835° N, 73.1332° E",
+    "builtYear": "1026–1027 CE (Solanki Dynasty)",
+    "architect": "King Bhima I of Solanki Dynasty",
+    "height": "Grand Monumental Complex & Surya Kund",
+    "category": "Archaeological Marvel",
+    "badge": "ASI Protected Monument",
+    "image": "assets/modhera-sun-temple.jpg",
+    "shortDesc": "An ancient architectural wonder where equinox solar rays illuminate the sanctum, flanked by the grand Surya Kund stepped reservoir with 108 miniature shrines.",
+    "fullDesc": "Perched gracefully along the banks of the sacred Pushpavati river, the Sun Temple of Modhera was erected in 1026–1027 CE by King Bhima I of the Solanki dynasty. Built without mortar using precision stone-interlocking techniques, the temple was engineered with sophisticated archaeoastronomical precision: on the spring and autumn equinoxes (March 21 and September 23), the very first rays of dawn penetrated the assembly hall and illuminated the diamond crown of the golden idol of Surya inside the sanctum. The complex features the Gudhamandapa (shrine hall), the Sabhamandapa (assembly hall with 52 intricately carved pillars representing the weeks of the year), and the majestic Surya Kund water tank.",
+    "highlights": [
+      {
+        "label": "Solar Equinox",
+        "value": "Equinox Alignment",
+        "detail": "First dawn rays illuminated the inner sanctum solar jewel"
+      },
+      {
+        "label": "Surya Kund",
+        "value": "108 Miniature Shrines",
+        "detail": "Stepped geometry reservoir reflecting ancient Vedic math"
+      },
+      {
+        "label": "Sabhamandapa",
+        "value": "52 Carved Pillars",
+        "detail": "Representing the 52 weeks of the solar calendar year"
+      },
+      {
+        "label": "Clean Energy",
+        "value": "100% Solar Village",
+        "detail": "Modhera is India's first 24/7 solar-powered heritage village"
+      }
+    ],
+    "culturalFacts": [
+      "The entire temple was constructed using dry-masonry with interlocking stone joints, completely devoid of mortar or lime.",
+      "The 52 pillars of the assembly hall depict episodes from the Ramayana, Mahabharata, and the cycle of seasons.",
+      "Modhera recently made modern history by becoming India's first 24x7 solar-powered village, drawing clean energy from the sun in honour of its heritage."
+    ],
+    "audioScript": "Welcome to the Sun Temple of Modhera, built in 1026 CE by King Bhima the First. This sacred Solanki masterpiece was aligned with astronomical precision so the first rays of the equinox sun illuminated the golden idol of Surya. Behold the fifty-two carved pillars representing the weeks of the year.",
+    "theme3D": {
+      "color": "#F59E0B",
+      "accent": "#FFD166",
+      "pedestalColor": "#92400E"
+    },
+    "likes": 165,
+    "scans": 420
+  }
+}

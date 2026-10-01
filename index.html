@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+  <title>AR Cultural Heritage Guide — Discover History Through Augmented Reality</title>
+  <meta name="description"
+    content="Immersive WebAR experience bringing Indian and Gujarati heritage monuments to life through marker-based augmented reality.">
+
+  <!-- Google Fonts for Indian Heritage Aesthetic: Cinzel Decorative, Cinzel, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- A-Frame and AR.js (Loaded for Marker-Based WebAR) -->
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ========================================== -->
+  <!-- 1. LANDING & HOME VIEW                     -->
+  <!-- ========================================== -->
+  <div id="home-view" class="view-section active">
+    <!-- Decorative Ambient Glows -->
+    <div class="glow-orb glow-top-left"></div>
+    <div class="glow-orb glow-bottom-right"></div>
+
+    <!-- Navigation Header -->
+    <header class="site-header">
+      <div class="brand-container">
+        <div class="brand-symbol">
+          <svg viewBox="0 0 40 40" class="lotus-icon" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-dasharray="2 3" />
+            <path d="M20 6 C23 13 29 16 33 20 C27 22 23 27 20 34 C17 27 13 22 7 20 C11 16 17 13 20 6 Z"
+              fill="currentColor" opacity="0.85" />
+            <circle cx="20" cy="20" r="4" fill="#D4AF37" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">DHAROHAR</span>
+          <span class="brand-sub">AR Cultural Heritage Guide</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-open-marker-modal-nav" class="btn-ghost" title="View & Print Hiro Marker">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <rect x="7" y="7" width="10" height="10" />
+          </svg>
+          <span>AR Marker</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-container">
+      <div class="heritage-badge-pill">
+        <span class="badge-dot"></span>
+        <span>HACKATHON MVP • WEB-BASED AUGMENTED REALITY</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="title-sub">Explore Indian Wonders</span>
+        <span class="title-main">AR Cultural Heritage Guide</span>
+      </h1>
+
+      <p class="hero-tagline">
+        "Discover history through augmented reality."
+      </p>
+
+      <p class="hero-description">
+        Point your camera at the cultural marker to unlock 3D informational overlays, architectural secrets, and spoken
+        audio chronicles of India's most celebrated heritage landmarks.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="hero-cta-group">
+        <button id="btn-start-ar" class="btn-primary-glow" aria-label="Start AR Experience">
+          <span class="btn-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+          </span>
+          <span class="btn-text">Start AR Experience</span>
+          <span class="btn-shine"></span>
+        </button>
+
+        <button id="btn-show-marker-hero" class="btn-secondary-heritage" aria-label="View or download AR Marker">
+          <span class="btn-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+          </span>
+          <span>View / Download Marker</span>
+        </button>
+
+        <input type="file" id="ar-image-upload" accept="image/*" style="display: none;">
+        <button id="btn-upload-ar" class="btn-secondary-heritage" aria-label="Upload Image">
+          <span class="btn-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </span>
+          <span>Upload Image Instead</span>
+        </button>
+      </div>
+
+      <!-- Quick 3-Step Guide -->
+      <div class="how-it-works-strip">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h4>Get The Marker</h4>
+            <p>Display the Hiro marker on your laptop screen or print it on paper.</p>
+          </div>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h4>Launch Camera</h4>
+            <p>Click "Start AR" to grant webcam access in your browser.</p>
+          </div>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h4>Scan & Explore</h4>
+            <p>Hover camera over the marker to reveal the interactive 3D monument overlay.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Featured Heritage Landmarks Showcase -->
+    <section class="landmarks-section">
+      <div class="section-header">
+        <span class="section-kicker">FEATURED SITES</span>
+        <h2 class="section-title">Iconic Cultural Landmarks</h2>
+        <p class="section-subtitle">Select any landmark to preload into the AR experience or inspect its historical
+          chronicle.</p>
+      </div>
+
+      <div class="cards-grid" id="monuments-grid">
+        <!-- Injected via JavaScript from HERITAGE_DATA -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p><strong>AR Cultural Heritage Guide</strong> • Hackathon Frontend MVP</p>
+        <p class="footer-tech">Engineered with HTML5, CSS3, Vanilla JavaScript, A-Frame & AR.js</p>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 2. AR CAMERA EXPERIENCE VIEW               -->
+  <!-- ========================================== -->
+  <div id="ar-view" class="view-section hidden">
+
+    <!-- AR Head-Up Display (DOM Overlays on top of A-Frame) -->
+    <div class="ar-hud-container" id="ar-hud">
+
+      <!-- Top Bar with Exit, Monument Selector, & Status -->
+      <div class="ar-top-bar">
+        <button id="btn-close-ar" class="btn-ar-exit" aria-label="Exit AR Camera and return to home">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Exit AR</span>
+        </button>
+
+        <div class="ar-status-badge" id="ar-status-badge">
+          <span class="status-pulse-dot"></span>
+          <span class="status-text" id="status-text">Scanning for Hiro Marker...</span>
+        </div>
+
+        <button id="btn-toggle-demo" class="btn-demo-toggle" title="Toggle Demo Mode if no physical marker is handy">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span id="demo-mode-label">Demo Simulation</span>
+        </button>
+      </div>
+
+      <!-- Monument Quick Switcher Strip in AR Mode -->
+      <div class="ar-monument-pills" id="ar-monument-pills">
+        <!-- Dynamically generated monument selector buttons -->
+      </div>
+
+      <!-- Center Scanning Reticle (guides the user to aim at the marker) -->
+      <div class="ar-reticle" id="ar-reticle">
+        <div class="reticle-corner top-left"></div>
+        <div class="reticle-corner top-right"></div>
+        <div class="reticle-corner bottom-left"></div>
+        <div class="reticle-corner bottom-right"></div>
+        <div class="reticle-beam"></div>
+        <div class="reticle-instruction">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <rect x="7" y="7" width="10" height="10" />
+          </svg>
+          <span>Point camera at Hiro Marker</span>
+        </div>
+        <button id="btn-open-marker-from-ar" class="reticle-marker-link">
+          Need Marker? Show on screen
+        </button>
+      </div>
+
+      <!-- Bottom Live AR Information Overlay Card (Triggered on Marker Detect) -->
+      <div class="ar-overlay-card hidden" id="ar-overlay-card">
+        <div class="overlay-card-header">
+          <div class="overlay-badge" id="overlay-badge">
+            <span class="badge-icon">🏛️</span>
+            <span id="overlay-badge-text">UNESCO World Heritage</span>
+          </div>
+          <button id="btn-pin-overlay" class="btn-icon-mini" title="Pin / Keep Card Visible">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v8m-5 0h10l-2 10H9l-2-10z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="overlay-card-body">
+          <div class="overlay-thumb-container">
+            <img src="assets/statue-of-unity.jpg" alt="Monument thumbnail" id="overlay-thumb" class="overlay-thumb">
+          </div>
+          <div class="overlay-info">
+            <h3 class="overlay-title" id="overlay-title">Statue of Unity</h3>
+            <p class="overlay-location" id="overlay-location">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Kevadia, Gujarat</span>
+            </p>
+            <p class="overlay-desc" id="overlay-desc">
+              World's tallest 182-metre monument honouring Sardar Vallabhbhai Patel, the unifier of modern India.
+            </p>
+          </div>
+        </div>
+
+        <!-- Key Cultural Fact Callout -->
+        <div class="overlay-fact-box" id="overlay-fact-box">
+          <div class="fact-tag">CULTURAL FACT</div>
+          <p id="overlay-fact-text">Over 169,000 Indian farming villages contributed scrap iron tools to forge the
+            monumental foundation.</p>
+        </div>
+
+        <!-- Overlay Action Bar -->
+        <div class="overlay-action-row">
+          <button id="btn-explore-overlay" class="btn-overlay-explore">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg>
+            <span>Explore Full History</span>
+          </button>
+
+          <button id="btn-audio-guide" class="btn-overlay-audio" title="Listen to spoken audio guide">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+              id="audio-icon">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            <span id="audio-btn-label">Listen</span>
+          </button>
+
+          <button id="btn-like-monument" class="btn-overlay-like" title="Upvote this monument">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+              </path>
+            </svg>
+            <span id="like-btn-label">Like (<span id="like-count">0</span>)</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- A-Frame AR Container -->
+    <!-- Note: Injected dynamically or active when AR view is entered -->
+    <div id="ar-scene-container" class="ar-scene-container"></div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 3. DEEP HERITAGE DETAIL MODAL              -->
+  <!-- ========================================== -->
+  <dialog id="heritage-modal" class="heritage-dialog">
+    <div class="modal-dialog-content">
+      <div class="modal-hero-banner">
+        <img id="modal-banner-img" src="assets/statue-of-unity.jpg" alt="Monument Banner">
+        <div class="banner-gradient"></div>
+        <button id="btn-close-modal" class="btn-modal-close" aria-label="Close details modal">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="banner-content">
+          <div class="banner-badge-row">
+            <span class="modal-tag" id="modal-tag">National Monument</span>
+            <span class="modal-year" id="modal-year">2018 CE</span>
+          </div>
+          <h2 class="modal-title" id="modal-title">Statue of Unity</h2>
+          <p class="modal-native" id="modal-native">स्टैच्यू ऑफ यूनिटी</p>
+        </div>
+      </div>
+
+      <div class="modal-body-scroll">
+        <!-- Location and Meta Bar -->
+        <div class="modal-meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Location</span>
+            <span class="meta-value" id="modal-location">Kevadia, Gujarat</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Dimensions / Scale</span>
+            <span class="meta-value" id="modal-height">182 Meters</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Architect / Patron</span>
+            <span class="meta-value" id="modal-architect">Ram V. Sutar</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Coordinates</span>
+            <span class="meta-value" id="modal-coords">21.8380° N, 73.7191° E</span>
+          </div>
+        </div>
+
+        <!-- Audio Guide Player Widget -->
+        <div class="modal-audio-player">
+          <div class="audio-player-info">
+            <div class="audio-waveform-bars">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div>
+              <strong>Heritage Audio Chronicle</strong>
+              <p class="audio-sub">Narration powered by Web Speech Synthesis</p>
+            </div>
+          </div>
+          <button id="btn-modal-speech" class="btn-primary-compact">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            <span id="modal-speech-label">Play Narration</span>
+          </button>
+        </div>
+
+        <!-- Historical Narrative -->
+        <div class="modal-section">
+          <h3 class="modal-heading">Historical Significance</h3>
+          <p class="modal-narrative" id="modal-full-desc">
+            Historical text goes here...
+          </p>
+        </div>
+
+        <!-- 4 Key Architecture & Engineering Highlights -->
+        <div class="modal-section">
+          <h3 class="modal-heading">Architectural & Cultural Highlights</h3>
+          <div class="highlights-grid" id="modal-highlights">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Cultural Facts List -->
+        <div class="modal-section">
+          <h3 class="modal-heading">Curated Cultural Facts</h3>
+          <ul class="facts-list" id="modal-facts-list">
+            <!-- Dynamically populated -->
+          </ul>
+        </div>
+
+        <!-- Action to Launch directly into AR for this site -->
+        <div class="modal-footer-cta">
+          <button id="btn-modal-launch-ar" class="btn-primary-glow full-width">
+            <span>Launch This Landmark in AR</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+
+  <!-- ========================================== -->
+  <!-- 4. HIRO AR MARKER MODAL & PRINT TOOL       -->
+  <!-- ========================================== -->
+  <dialog id="marker-modal" class="marker-dialog">
+    <div class="marker-modal-content">
+      <div class="marker-modal-header">
+        <div>
+          <h3>AR Target Marker (Hiro Preset)</h3>
+          <p>Scan this target with your camera to trigger the heritage overlay.</p>
+        </div>
+        <button id="btn-close-marker-modal" class="btn-modal-close">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="marker-display-wrapper">
+        <div class="marker-frame">
+          <img src="assets/hiro-marker.png" alt="Hiro Marker Target for AR.js" id="marker-img" class="marker-image">
+        </div>
+        <p class="marker-tip">
+          💡 <strong>Tip for Hackathon Judges:</strong> Keep this modal open on your monitor or open it on a phone, then
+          point your AR camera at it!
+        </p>
+      </div>
+
+      <div class="marker-actions">
+        <a href="assets/hiro-marker.png" download="hiro-marker.png" class="btn-secondary-heritage">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span>Download PNG</span>
+        </a>
+        <button id="btn-print-marker" class="btn-primary-compact">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          <span>Print / Open Fullscreen</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Application Logic -->
+  <script src="script.js"></script>
+</body>
+
+</html>
